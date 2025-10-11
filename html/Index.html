@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Tugo.png">
+
+    <title>ClassGo: El Mejor Momento para Aprender es ¡Ahora!</title>
+    <!-- Importación de íconos de Ionicons y Google Fonts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paleta de Colores */
+            --primary-color: #023047;   /* Azul Marino Oscuro */
+            --secondary-color: #219EBC; /* Azul Cian Brillante */
+            --secondary-color2: #FCFAED; /* Blanco Cremoso */
+            --tertiary-color: #8ECAE6;   /* Azul Celeste Claro */
+            --tertiary-color2: #FB8500;  /* Naranja Brillante */
+        }
+
+        /* Reset de estilos básicos y configuración de la fuente */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif; 
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100dvh; 
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background-size: cover;
+            background-position: center;
+            padding: 20px; /* Padding general */
+        }
+
+        /* --- Video de Fondo --- */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 10%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            object-fit: cover; 
+
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .logo img {
+            height: 40px; 
+            filter: drop-shadow(0 0 5px rgba(251, 133, 0, 0.5)); 
+        }
+
+        .navigation a {
+            position: relative;
+            font-size: 1.1em;
+            color: var(--secondary-color2);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: color 0.3s;
+        }
+
+        .navigation .btnLogin-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid var(--secondary-color2);
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: var(--secondary-color2);
+            font-weight: 500;
+            margin-left: 40px;
+            transition: 0.5s;
+        }
+
+        .navigation .btnLogin-popup:hover {
+            background: var(--secondary-color2);
+            color: var(--primary-color);
+        }
+
+        /* --- Contenedor Principal de la Aplicación (Comercial + Wrapper) --- */
+        .app-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px; /* Límite para pantallas grandes */
+            width: 95%;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px; /* Espacio para el header */
+        }
+
+        /* --- SECCIÓN COMERCIAL (Izquierda) --- */
+        .commercial-section {
+            flex: 1; /* Ocupa el espacio restante */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: var(--secondary-color2);
+        }
+        
+        .commercial-logo img {
+            width: 250px; 
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(251, 133, 0, 0.7));
+        }
+        
+        .commercial-text {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .commercial-text h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--tertiary-color2); /* Título en Naranja */
+        }
+
+        .commercial-text p {
+            font-size: 1.1em;
+            max-width: 450px;
+            color: var(--tertiary-color);
+            /* Nuevo para centrar el párrafo como un bloque */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contenedor de las 3 Imágenes */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        .image-grid .detail-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Ajuste de las Imágenes Pequeñas para que se vean detalladas pero no grandes */
+        .image-grid img {
+            width: 100%;
+            height: 80px; /* Altura fija para mantener el detalle y el tamaño pequeño */
+            object-fit: cover; /* Asegura que la imagen cubra el área sin estirarse */
+            border-radius: 8px;
+            margin-bottom: 5px;
+            border: 2px solid var(--tertiary-color2);
+        }
+        
+        .image-grid p {
+            font-size: 0.8em;
+            font-weight: 500;
+            color: var(--secondary-color2);
+        }
+        
+        /* --- FORMULARIO WRAPPER (Derecha) --- */
+        .wrapper {
+            /* Fondo semi-transparente como antes */
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            width: 400px;
+            height: 480px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: height 0.3s ease; 
+        }
+        
+        /* Altura ajustada para Registro (compacta) */
+        .wrapper.active {
+            height: 520px; 
+        }
+
+        .wrapper .form-box {
+            width: 100%;
+            padding: 40px;
+            overflow-y: auto; 
+            max-height: 100%;
+        }
+
+        .wrapper .form-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .wrapper .form-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .wrapper .form-box::-webkit-scrollbar-thumb {
+            background: var(--tertiary-color); 
+        }
+
+        .wrapper .form-box.login {
+            transition: transform 0.3s ease;
+            transform: translateX(0);
+        }
+
+        .wrapper.active .form-box.login {
+            transition: none;
+            transform: translateX(-400px);
+        }
+        
+
+        .wrapper .form-box.register {
+            position: absolute;
+            transition: none;
+            transform: translateX(400px);
+        }
+
+        .wrapper.active .form-box.register {
+            transition: transform 0.3s ease;
+            transform: translateX(0);
+        }
+
+        .form-box h2 {
+            font-size: 2em;
+            color: var(--secondary-color2);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 45px; 
+            margin: 20px 0; 
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid var(--secondary-color2);
+            font-size: 1em;
+            color: var(--secondary-color2);
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: var(--secondary-color2);
+            font-weight: 500;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: var(--secondary-color2);
+            line-height: 45px; 
+        }
+        
+        .btn-google {
+            width: 100%;
+            height: 40px; 
+            background: var(--tertiary-color2); 
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            font-size: 0.9em; 
+            color: var(--primary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px; 
+            transition: background-color 0.3s;
+        }
+
+        .btn-google ion-icon {
+            font-size: 1.3em; 
+            margin-right: 8px;
+        }
+        
+        .remember-forgot {
+            font-size: 0.85em; 
+            color: var(--secondary-color2);
+            font-weight: 500;
+            margin: -5px 0 15px; 
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px; 
+            background: var(--secondary-color);
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            font-size: 1em;
+            color: var(--secondary-color2);
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .login-register {
+            font-size: 0.85em; 
+            color: var(--secondary-color2);
+            text-align: center;
+            font-weight: 500;
+            margin-top: 20px; 
+        }
+
+        .login-register p a, .remember-forgot a {
+            color: var(--tertiary-color2);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .login-register p a:hover, .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+        
+        .role-selection {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: -10px; 
+            margin-bottom: 20px; 
+            color: var(--secondary-color2);
+            font-size: 0.9em; 
+        }
+
+        .role-label {
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .role-selection .radio-label {
+            position: relative;
+            display: flex;
+            align-items: center;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            padding-left: 25px;
+            transition: color 0.3s;
+        }
+        
+        .role-selection input[type="radio"] {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .role-selection .radio-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--secondary-color2);
+            border-radius: 50%;
+            background-color: transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .role-selection .radio-label::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--tertiary-color2);
+            transition: transform 0.3s;
+        }
+
+        .role-selection .radio-label.selected::before {
+            border-color: var(--tertiary-color2);
+        }
+
+        .role-selection .radio-label.selected::after {
+            transform: translateY(-50%) scale(1);
+        }
+        
+        /* --- Contenedor del Botón de Idioma Abajo --- */
+        .language-fixed-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        .btnLang-fixed {
+            width: 50px;
+            height: 50px;
+            background: var(--tertiary-color2); 
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s;
+            overflow: hidden; 
+        }
+        
+        .btnLang-fixed:hover {
+            transform: scale(1.1);
+        }
+        
+        .btnLang-fixed ion-icon {
+            font-size: 1.8em;
+            color: var(--primary-color);
+        }
+        
+        .lang-list {
+            position: absolute;
+            bottom: 60px; 
+            right: 0;
+            background: var(--primary-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 6px;
+            list-style: none;
+            padding: 5px 0;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+
+        .language-fixed-container.open .lang-list {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-list li {
+            padding: 10px 15px;
+            color: var(--secondary-color2);
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .lang-list li.current-lang {
+            background-color: var(--tertiary-color2);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .commercial-section {
+                display: none; 
+            }
+            .app-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            .navigation a {
+                margin-left: 20px;
+            }
+            .wrapper {
+                width: 95%;
+                max-width: 380px;
+                height: 480px; 
+            }
+            .wrapper.active {
+                 height: 480px;
+            }
+            .navigation .btnLogin-popup {
+                width: 100px;
+                height: 40px;
+                font-size: 0.9em;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Se recomienda cambiar el video Tugo1.mp4 por un video comercial/promocional -->
+    <video autoplay muted loop id="background-video">
+        <source src="Tugo1.mp4" type="video/mp4">
+        Tu navegador no soporta el tag de video.
+    </video>
+    
+    <header>
+        <div class="logo">
+            <!-- Logo en negativo para la cabecera -->
+            <img src="Tugo  en negativo.png" alt="Logo de Tugo">
+        </div>
+
+        <nav class="navigation">
+            <a href="https://es.pinterest.com/pin/15551561209749153/" data-key="home">Home</a>
+            <a href="#" data-key="about">About</a>
+            <a href="#" data-key="services">Services</a>
+            <a href="#" data-key="contact">Contact</a>
+            
+            <button class="btnLogin-popup" data-key="login-btn">Iniciar Sesión</button>
+        </nav>
+    </header>
+
+    <!-- Contenedor principal que divide la pantalla en Comercial y Formulario -->
+    <div class="app-container">
+        
+        <!-- SECCIÓN DE COMERCIAL (Izquierda) -->
+        <div class="commercial-section">
+            <div class="commercial-logo">
+                 <!-- Logo Tugo como imagen principal -->
+                <img src="Tugo.png" alt="Logo Tugo">
+            </div>
+            
+            <div class="commercial-text">
+                <h1 data-key="commercial-title">El Conocimiento a tu Alcance</h1>
+                <p data-key="commercial-text">Descubre un mundo de oportunidades. Conéctate con los mejores tutores o encuentra a los estudiantes más dedicados.</p>
+            </div>
+            
+            <div class="image-grid">
+                <!-- Se asume que 'image_ec62b0.png', 'image_ec62c8.png', y 'image_ec62cb.png' son tus 3 imágenes de detalle. Si las tienes con otros nombres, cámbialos. -->
+                <div class="detail-card">
+                    <img src="image_ec62b0.png" alt="Clases Personalizadas">
+                    <p>Clases Personalizadas</p>
+                </div>
+                <div class="detail-card">
+                    <img src="image_ec62c8.png" alt="Tutoría 24/7">
+                    <p>Tutoría 24/7</p>
+                </div>
+                <div class="detail-card">
+                    <img src="image_ec62cb.png" alt="Roles Flexibles">
+                    <p>Roles Flexibles</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WRAPPER DE AUTENTICACIÓN (Derecha) -->
+        <div class="wrapper active-popup">
+            <!-- FORMULARIO DE INICIO DE SESIÓN -->
+            <div class="form-box login">
+                <h2 data-key="login-title">Iniciar Sesión</h2>
+                <form action="#" class="login-form">
+                    
+                    <div class="btn-google" data-key="google-login-btn">
+                        <ion-icon name="logo-google"></ion-icon> <span>Inicia Sesión con Google</span>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required id="login-email">
+                        <label data-key="label-email" for="login-email">Correo Electrónico</label>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required id="login-password">
+                        <label data-key="label-password" for="login-password">Contraseña</label>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <label data-key="remember-me"><input type="checkbox">Recuérdame</label>
+                        <a href="#" data-key="forgot-password-link">¿Olvidaste tu Contraseña?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn" data-key="login-submit">Iniciar Sesión</button>
+                    
+                    <div class="login-register">
+                        <p><span data-key="no-account">¿No tienes una cuenta?</span> <a href="#" class="register-link" data-key="register-link">Regístrate</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- FORMULARIO DE REGISTRO -->
+            <div class="form-box register">
+                <h2 data-key="register-title">Registrar</h2>
+                <form action="#" class="register-form" data-role="estudiante">
+                    
+                    <div class="btn-google" data-key="google-register-btn">
+                        <ion-icon name="logo-google"></ion-icon> <span>Regístrate con Google</span>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required id="register-email">
+                        <label data-key="label-email" for="register-email">Correo Electrónico</label>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required id="register-password">
+                        <label data-key="label-password" for="register-password">Contraseña</label>
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required id="register-confirm-password">
+                        <label data-key="label-confirm-password" for="register-confirm-password">Confirmar Contraseña</label>
+                    </div>
+                    
+                    <!-- Lógica de Roles -->
+                    <div class="role-selection">
+                        <span class="role-label" data-key="label-rol">Rol</span> 
+                        
+                        <div class="role-option">
+                            <label data-key="label-tutor" class="radio-label">
+                                <input type="radio" name="role" value="tutor" id="role-tutor"> 
+                                Tutor
+                            </label>
+                        </div>
+
+                        <div class="role-option">
+                            <label data-key="label-estudiante" class="radio-label selected"> 
+                                <input type="radio" name="role" value="estudiante" id="role-estudiante" checked> 
+                                Estudiante
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <label data-key="label-terms"><input type="checkbox" required>Acepto los términos y condiciones</label>
+                    </div>
+                    
+                    <button type="submit" class="btn" data-key="register-submit">Registrar</button>
+                    
+                    <div class="login-register">
+                        <p><span data-key="have-account">¿Ya tienes una cuenta?</span> <a href="#" class="login-link" data-key="login-link">Inicia Sesión</a></p>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Botón de Idioma Fijo en la parte inferior derecha -->
+    <div class="language-fixed-container" id="language-dropdown">
+        <button class="btnLang-fixed" id="language-toggle" title="Cambiar Idioma">
+            <ion-icon name="flag"></ion-icon> 
+        </button>
+        <ul class="lang-list">
+            <li data-lang="es" class="current-lang">Español</li>
+            <li data-lang="en">English</li>
+            <li data-lang="pt">Português</li>
+        </ul>
+    </div>
+
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        const loginLink = document.querySelector('.login-link');
+        const registerLink = document.querySelector('.register-link');
+        const btnPopup = document.querySelector('.btnLogin-popup');
+        const registerForm = document.querySelector('.register-form');
+
+        // --- Lógica de Idiomas ---
+
+        // DICCIONARIO DE TRADUCCIONES
+        const translations = {
+            'es': {
+                'home': 'Inicio',
+                'about': 'Acerca de',
+                'err-role': 'Por favor, selecciona un rol.', 
+                'err-terms': 'Debes aceptar los términos y condiciones.',
+                'commercial-title': 'El Conocimiento a tu Alcance',
+                'commercial-text': 'Descubre un mundo de oportunidades. Conéctate con los mejores tutores o encuentra a los estudiantes más dedicados.'
+            },
+            'en': {
+                'home': 'Home',
+                'about': 'About',
+                'err-role': 'Please select a role.',
+                'err-terms': 'You must accept the terms and conditions.',
+                'commercial-title': 'Knowledge at Your Fingertips',
+                'commercial-text': 'Discover a world of opportunities. Connect with the best tutors or find the most dedicated students.'
+            },
+            'pt': {
+                'home': 'Início',
+                'about': 'Sobre',
+                'err-role': 'Por favor, selecione uma função.', 
+                'err-terms': 'Você deve aceitar os termos e condições.',
+                'commercial-title': 'O Conhecimento ao Seu Alcance',
+                'commercial-text': 'Descubra um mundo de oportunidades. Conecte-se com os melhores tutores ou encontre os alunos mais dedicados.'
+            },
+            'es': {
+                'home': 'Inicio',
+                'about': 'Acerca de',
+                'services': 'Servicios',
+                'contact': 'Contacto',
+                'login-btn': 'Iniciar Sesión',
+                'login-title': 'Iniciar Sesión',
+                'login-submit': 'Iniciar Sesión',
+                'register-title': 'Registrar',
+                'register-submit': 'Registrar',
+                'no-account': '¿No tienes una cuenta?',
+                'register-link': 'Regístrate',
+                'have-account': '¿Ya tienes una cuenta?',
+                'login-link': 'Inicia Sesión',
+                'label-email': 'Correo Electrónico',
+                'label-password': 'Contraseña',
+                'label-confirm-password': 'Confirmar Contraseña',
+                'remember-me': 'Recuérdame',
+                'forgot-password-link': '¿Olvidaste tu Contraseña?',
+                'google-login-btn': 'Inicia Sesión con Google',
+                'google-register-btn': 'Regístrate con Google',
+                'label-rol': 'Rol',
+                'label-tutor': 'Tutor',
+                'label-estudiante': 'Estudiante',
+                'label-terms': 'Acepto los términos y condiciones',
+                'err-match': 'Las contraseñas no coinciden.', 
+                'err-role': 'Por favor, selecciona un rol.', 
+                'err-terms': 'Debes aceptar los términos y condiciones.' 
+            },
+            'en': {
+                'home': 'Home',
+                'about': 'About',
+                'services': 'Services',
+                'contact': 'Contact',
+                'login-btn': 'Login',
+                'login-title': 'Login',
+                'login-submit': 'Login',
+                'register-title': 'Register',
+                'register-submit': 'Register',
+                'no-account': 'Don\'t have an account?',
+                'register-link': 'Register',
+                'have-account': 'Already have an account?',
+                'login-link': 'Log In',
+                'label-email': 'Email Address',
+                'label-password': 'Password',
+                'label-confirm-password': 'Confirm Password',
+                'remember-me': 'Remember me',
+                'forgot-password-link': 'Forgot Password?',
+                'google-login-btn': 'Login with Google',
+                'google-register-btn': 'Register with Google',
+                'label-rol': 'Role',
+                'label-tutor': 'Tutor',
+                'label-estudiante': 'Student',
+                'label-terms': 'I accept the terms and conditions',
+                'err-match': 'Passwords do not match.',
+                'err-role': 'Please select a role.',
+                'err-terms': 'You must accept the terms and conditions.'
+            },
+            'pt': {
+                'home': 'Início',
+                'about': 'Sobre',
+                'services': 'Serviços',
+                'contact': 'Contato',
+                'login-btn': 'Entrar',
+                'login-title': 'Entrar',
+                'login-submit': 'Entrar',
+                'register-title': 'Registrar',
+                'register-submit': 'Registrar',
+                'no-account': 'Não tem uma conta?',
+                'register-link': 'Cadastre-se',
+                'have-account': 'Já tem uma conta?',
+                'login-link': 'Entrar',
+                'label-email': 'Correio Eletrônico',
+                'label-password': 'Senha',
+                'label-confirm-password': 'Confirmar Senha',
+                'remember-me': 'Lembrar de mim',
+                'forgot-password-link': 'Esqueceu sua Senha?',
+                'google-login-btn': 'Entrar com Google',
+                'google-register-btn': 'Cadastre-se com Google',
+                'label-rol': 'Função',
+                'label-tutor': 'Tutor',
+                'label-estudiante': 'Estudante',
+                'label-terms': 'Eu aceito os termos e condições',
+                'err-match': 'As senhas não coincidem.', 
+                'err-role': 'Por favor, selecione uma função.', 
+                'err-terms': 'Você deve aceitar os termos e condições.'
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('language') || 'es';
+
+        // Elementos del Dropdown de Idiomas Fijo
+        const langDropdown = document.getElementById('language-dropdown');
+        const langToggle = document.getElementById('language-toggle');
+        const langListItems = document.querySelectorAll('.lang-list li');
+        
+        
+         
+        
+        const setLanguage = (lang) => {
+            const translation = translations[lang];
+            if (!translation) return;
+
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translation[key]) {
+                    // Botones de Google
+                    if (element.classList.contains('btn-google')) {
+                         element.innerHTML = `<ion-icon name="logo-google"></ion-icon> <span>${translation[key]}</span>`;
+                    }
+                    else if (element.tagName === 'LABEL' && element.querySelector('input')) {
+                        const input = element.querySelector('input');
+                        element.textContent = translation[key];
+                        element.prepend(input);
+                    }
+                    else {
+                        element.textContent = translation[key];
+                    }
+                }
+            });
+
+            // Actualiza el idioma actual en la lista
+            langListItems.forEach(item => {
+                item.classList.remove('current-lang');
+                if (item.getAttribute('data-lang') === lang) {
+                    item.classList.add('current-lang');
+                }
+            });
+
+            localStorage.setItem('language', lang);
+            currentLanguage = lang;
+        };
+        
+        // LÓGICA DE INTERACCIÓN DEL WRAPPER Y EL POPUP
+        
+        registerLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            wrapper.classList.add('active');
+        });
+
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            wrapper.classList.remove('active');
+        });
+        
+        btnPopup.addEventListener('click', () => {
+            
+            wrapper.classList.add('active-popup'); 
+            wrapper.classList.remove('active'); 
+        });
+
+        
+
+        // MANEJADOR DE EVENTO PARA EL DROPDOWN DE IDIOMA FIJO
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+
+        langListItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const newLang = item.getAttribute('data-lang');
+                setLanguage(newLang);
+                langDropdown.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (langDropdown && !langDropdown.contains(event.target)) {
+                langDropdown.classList.remove('open');
+            }
+        });
+        
+        // LÓGICA DE SELECCIÓN DE ROL (Y GUARDA EL VALOR EN EL FORMULARIO)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        const roleLabels = document.querySelectorAll('.role-selection .radio-label');
+
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                // Actualiza la clase visual
+                roleLabels.forEach(lbl => lbl.classList.remove('selected'));
+                if (radio.checked) {
+                    radio.closest('.radio-label').classList.add('selected');
+                    // Guarda el rol seleccionado en el atributo data-role del formulario
+                    registerForm.setAttribute('data-role', radio.value);
+                }
+            });
+        });
+        
+        // LÓGICA DE VALIDACIÓN DEL FORMULARIO DE REGISTRO
+        
+        // Función simple para mostrar un error (Reemplaza alert)
+        const showErrorMessage = (message) => {
+            const errorBox = document.createElement('div');
+            errorBox.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 10px 20px;
+                background-color: var(--tertiary-color2);
+                color: var(--primary-color);
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                font-weight: 600;
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.3s;
+            `;
+            errorBox.textContent = message;
+            document.body.appendChild(errorBox);
+
+            setTimeout(() => {
+                errorBox.style.opacity = 1;
+            }, 10);
+            
+            setTimeout(() => {
+                errorBox.style.opacity = 0;
+                setTimeout(() => {
+                    document.body.removeChild(errorBox);
+                }, 300);
+            }, 3000);
+        };
+
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            const termsChecked = document.querySelector('[data-key="label-terms"] input[type="checkbox"]').checked;
+            const selectedRole = registerForm.getAttribute('data-role');
+
+            const errors = [];
+            const t = translations[currentLanguage]; 
+
+            // 1. Validar coincidencia de contraseñas
+            if (password !== confirmPassword) {
+                errors.push(t['err-match']);
+            }
+            
+            // 2. Validar selección de rol
+            if (!selectedRole || selectedRole === "") {
+                 errors.push(t['err-role']);
+            }
+
+            // 3. Validar términos y condiciones
+            if (!termsChecked) {
+                errors.push(t['err-terms']);
+            }
+
+
+            if (errors.length > 0) {
+                showErrorMessage(errors[0]);
+                if (errors[0] === t['err-match']) {
+                    document.getElementById('register-confirm-password').focus();
+                }
+                return;
+            }
+
+            // Si pasa la validación
+            console.log('--- Registro Exitoso Simulado ---');
+            console.log('Correo:', document.getElementById('register-email').value);
+            console.log('Rol Seleccionado:', selectedRole); 
+            showErrorMessage("¡Registro exitoso como " + selectedRole + "!");
+        });
+        
+        
+        // 6. INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa el idioma 
+            setLanguage(currentLanguage);
+            
+            // Inicializa la clase 'selected' para el rol 
+            const checkedRoleLabel = document.querySelector('.role-selection input[type="radio"]:checked');
+            if (checkedRoleLabel) {
+                checkedRoleLabel.closest('.radio-label').classList.add('selected');
+                registerForm.setAttribute('data-role', checkedRoleLabel.value);
+            }
+            
+            // Prevenir el envío de formularios de Login (solo para la demo)
+             document.querySelector('.login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('Formulario de autenticación (Login) simulado.');
+                showErrorMessage("Iniciando Sesión...");
+            });
+            
+        });
+
+    </script>
+
+</body>
+</html>
