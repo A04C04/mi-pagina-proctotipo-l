@@ -101,7 +101,6 @@
             margin-top: 50px; /* Espacio para el header */
         }
 
-        /* --- SECCIÓN COMERCIAL (Izquierda) --- */
         .commercial-section {
             flex: 1; /* Ocupa el espacio restante */
             display: flex;
@@ -173,9 +172,7 @@
             color: var(--secondary-color2);
         }
         
-        /* --- FORMULARIO WRAPPER (Derecha) --- */
         .wrapper {
-            /* Fondo semi-transparente como antes */
             background: transparent;
             border: 2px solid rgba(255, 255, 255, 0.5);
             -webkit-backdrop-filter: blur(20px);
@@ -186,18 +183,18 @@
             opacity: 0;
             visibility: hidden;
             transform: scale(0.9);
-            transition: all 0.5s ease;
-            height: 480px; 
+            transition: all 0.5s ease, height 0.3s ease; 
+            height: auto; 
+            padding: 20px 0; 
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            transition: height 0.3s ease; 
         }
         
         /* Altura ajustada para Registro (compacta) */
         .wrapper.active {
-            height: 520px; 
+            height: auto; 
         }
 
         .wrapper.active-popup {
@@ -527,7 +524,7 @@
 }
 
 .particle:nth-child(2n) {
-    background: var(--tertiary-color); /* Azul Celeste Claro */
+    background: radial-gradient(circle, var(--tertiary-color) 0%, transparent 70%);
     animation-delay: 2s;
     animation-duration: 25s;
     width: 80px; height: 80px;
@@ -578,28 +575,30 @@
                 max-width: 400px;
             }
         }
-
         @media (max-width: 768px) {
-            header {
-                padding: 20px;
-            }
-            .navigation a {
-                margin-left: 20px;
-            }
-            .wrapper {
-                width: 95%;
-                max-width: 380px;
-                height: 480px; 
-            }
-            .wrapper.active {
-                 height: 480px;
-            }
-            .navigation .btnLogin-popup {
-                width: 100px;
-                height: 40px;
-                font-size: 0.9em;
-            }
-        }
+    header {
+        padding: 20px;
+    }
+    .navigation a {
+        margin-left: 20px;
+    }
+    .wrapper {
+        width: 95%;
+        max-width: 380px;
+        /* *** CAMBIO CLAVE 3: Dejamos que la altura se ajuste automáticamente *** */
+        height: auto; 
+        padding: 20px 0; /* Aseguramos que el padding vertical mantenga el espacio */
+    }
+    .wrapper.active {
+         /* Mantenemos 'auto' para que se ajuste al formulario más largo */
+         height: auto; 
+    }
+    .navigation .btnLogin-popup {
+        width: 100px;
+        height: 40px;
+        font-size: 0.9em;
+    }
+}
         
     </style>
 </head>
